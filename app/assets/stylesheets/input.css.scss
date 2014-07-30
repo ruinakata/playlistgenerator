@@ -1,0 +1,48 @@
+body {
+    padding: 20px;
+    background-color: #353631;
+    color: white;
+    font-family: 'Inconsolata';
+}
+
+#search-form, .form-control {
+    margin-bottom: 20px;
+}
+
+.cover {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    background-size: cover;
+}
+
+.cover:hover {
+    cursor: pointer;
+}
+
+.cover.playing {
+    border: 5px solid #e45343;
+}
+
+#search {
+	background-color: #353631;
+	font-family: 'Inconsolata';
+	border: 2px solid #0AFAF6;
+	width: 100px;
+	height: 40px;
+	border-radius: 5px;
+	color: #0AFAF6;
+	font-size: 20px;
+}
+
+#search:hover {
+	background-color: #0AFAF6;
+	border: 2px solid #353631;
+	color: #353631;
+}
+
+#query {
+	height: 20px;
+	border-radius: 5px;
+	width: 150px;
+}

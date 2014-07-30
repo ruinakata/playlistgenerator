@@ -11,7 +11,7 @@ require 'json'
 
 ########################### SEARCH WITH ARTIST NAME ###########################################
  jaccardlist = {}
- arrayofusersongnames = Track.where(playlist_id: 71).map {|track| track.artist} #compare playlist1 to everyhting else
+ arrayofusersongnames = Track.where(playlist_id: 12).map {|track| track.artist} #compare playlist1 to everyhting else
 playlist_id = 1
 while playlist_id < 2000 
   playlisttracks = Track.where(playlist_id: playlist_id)
@@ -79,6 +79,7 @@ arrayofarrays = jaccardlist.sort_by{|k,v| v}.reverse
 
 
 ###################################################
+
 
 
 

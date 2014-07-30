@@ -41,3 +41,13 @@ gem 'spring',        group: :development
 gem "hirb"
 
 gem 'json'
+
+gem 'searchkick'
+
+
+
+
+
+
+
+

@@ -1,9 +1,7 @@
 class Track < ActiveRecord::Base
+  searchkick
 
   def self.save_into_db
-
-
-
 
     # playlistdata1 = JSON.parse(File.read('simplifiedtracks1.json'))
     # playlistdata2 = JSON.parse(File.read('simplifiedtracks2.json'))
