@@ -1,0 +1,26 @@
+in all simplified tracks there are 2613 playlists
+2.1.1 :013 > a=arr1.count
+ => 648
+2.1.1 :014 > b=arr2.count
+ => 644
+2.1.1 :015 > c=arr3.count
+ => 678
+2.1.1 :016 > d=arr4.count
+ => 643
+
+
+Jaccard Index (Jaccard similarity coefficient)
+
+Given two objects, A and B, each with n binary attributes, the Jaccard coefficient is a useful measure of the overlap that A and B share with their attributes. Each attribute of A and B can either be 0 or 1. The total number of each combination of attributes for both A and B are specified as follows:
+
+M_{11} represents the total number of attributes where A and B both have a value of 1.
+M_{01} represents the total number of attributes where the attribute of A is 0 and the attribute of B is 1.
+M_{10} represents the total number of attributes where the attribute of A is 1 and the attribute of B is 0.
+M_{00} represents the total number of attributes where A and B both have a value of 0.
+
+Each attribute must fall into one of these four categories, meaning that
+M_{11} + M_{01} + M_{10} + M_{00} = n.
+The Jaccard similarity coefficient, J, is given as
+J = M11 / (M01 + M10 + M11)
+
+0 < J < 1
