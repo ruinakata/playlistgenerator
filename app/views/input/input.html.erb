@@ -10,36 +10,33 @@
 
 <body>
 
-
 		<div class="container">
 		    <h1>Search for an Artist</h1>
 		    <form id="search-form">
 		        <input type="text" id="query" value="" class="form-control" />
 		        <input type="submit" id="search" class="btn btn-primary" value="Search" />
 		    </form>
+		  
+		    <div><h1 id="choose">Choose</h1></div>
 		    <div id="results"></div>
 		</div>
 
 <br>
 
 	<div>
-		<h2> Please input 10 artists! </h2>
-		<div id="artist1"><h3>Artist 1</h3></div>
-		<div id="artist2"><h3>Artist 2</h3></div>
-		<div id="artist3"><h3>Artist 3</h3></div>
-		<div id="artist4"><h3>Artist 4</h3></div>
-		<div id="artist5"><h3>Artist 5</h3></div>
-		<div id="artist6"><h3>Artist 6</h3></div>
-		<div id="artist7"><h3>Artist 7</h3></div>
-		<div id="artist8"><h3>Artist 8</h3></div>
-		<div id="artist9"><h3>Artist 9</h3></div>
-		<div id="artist10"><h3>Artist 10</h3></div>
+		<h1> Selected Artists </h1>
+		<div id="artist1" value="free"><h2>Artist 1</h2></div>
+		<div id="artist2" value="free"><h2>Artist 2</h2></div>
+		<div id="artist3" value="free"><h2>Artist 3</h2></div>
+		<div id="artist4" value="free"><h2>Artist 4</h2></div>
+		<div id="artist5" value="free"><h2>Artist 5</h2></div>
+		<div id="artist6" value="free"><h2>Artist 6</h2></div>
+		<div id="artist7" value="free"><h2>Artist 7</h2></div>
+		<div id="artist8" value="free"><h2>Artist 8</h2></div>
+		<div id="artist9" value="free"><h2>Artist 9</h2></div>
+		<div id="artist10" value="free"><h2>Artist 10</h2></div>
 	</div>
 	
-
-
-
-
 
 
 
@@ -51,7 +48,12 @@
 
 <script type="text/javascript">
 	
+		$('#choose').hide();
+		$('#search').on('click', function(){
+			$('#choose').show();
+		});
 
+/////////////////////////// NOT MINE //////////////////////////////////////////////////////////
 		// find template and compile it
 		var templateSource = document.getElementById('results-template').innerHTML,
 		    template = Handlebars.compile(templateSource),
@@ -63,6 +65,7 @@
 		    $.ajax({
 		        url: 'https://api.spotify.com/v1/albums/' + albumId,
 		        success: function (response) {
+		            console.log(response);
 		            callback(response);
 		        }
 		    });
@@ -76,10 +79,12 @@
 		            type: 'album'
 		        },
 		        success: function (response) {
+		        		console.log(response);
 		            resultsPlaceholder.innerHTML = template(response);
 		        }
 		    });
 		};
+
 
 		results.addEventListener('click', function(e) {
 		    var target = e.target;
@@ -105,10 +110,94 @@
 		    }
 		});
 
-		document.getElementById('search-form').addEventListener('submit', function (e) {
-		    e.preventDefault();
-		    searchAlbums(document.getElementById('query').value);
+		// document.getElementById('search-form').addEventListener('submit', function (e) {
+		//     e.preventDefault();
+		//     searchAlbums(document.getElementById('query').value);
+		// }, false);
+
+//////////////////////////////////////////// MINE !! //////////////////////////////////////////////////
+
+
+			var searchArtists = function (query) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/search',
+					data: {
+							q: query,
+							type: 'artist'
+					},
+					success: function (response) {
+						$('#results').empty();
+						console.log(response);
+						length = response.artists.items.length
+						for (var i=0; i<length; i++) {
+								id = response.artists.items[i].id
+								name = response.artists.items[i].name
+								console.log(name)
+								num = i + 1
+								console.log(num)
+								$("#results").append('<div class="piccont" id="a' + num + '" value="' + name + '">');
+								console.log("appended div")
+								$('#a'+num+'').append('<p>' + name + '</p>');
+								console.log("pic length")
+								l = response.artists.items[i].images.length
+								// if (l == 0) {
+								// 	console.log("nopics")
+								// }
+								// else {
+									console.log("i have pics")
+									imageurl = response.artists.items[i].images[0].url
+									console.log("append!")
+									$('#a'+num+'').append('<img class="pic" src="' + imageurl + '"/></div>');	
+								// }
+							
+							
+						}
+						resultsPlaceholder.innerHTML = template(response);
+					}
+				});
+			};
+
+// when they select an artist append to one of the artist rows
+		$(document).ready(function(){
+				$(document).on('click', ".piccont", function(){
+				name = this.value();
+				console.log("got name");
+				console.log(name)
+				for (i=1; i<11; i++) {
+					console.log("in for loop")
+					artist = "#artist" + i // artist="#artist1"
+					value = $(artist).val(); //free
+					if (value == "free") {
+						theartist = "the" + artist
+						//$(artist).append("<p id=" + theartist + " value=" + value + ">" + value + "</p>");
+						$(artist).append("taken");
+						$(artist).val("taken");
+						console.log("here");
+						break;
+					}
+					else {}
+				}
+			});
+		});
+
+
+
+
+	// $(".piccont").on('click', function(){
+	// 			name = currentTarget.value();
+	// 			console.log(name)
+	// 		})
+
+
+
+
+		document.getElementById('search-form').addEventListener('submit', function(e){
+				e.preventDefault();
+				searchword = document.getElementById('query').value
+				searchArtists(searchword);
 		}, false);
+
+
 
 </script>
 

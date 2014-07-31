@@ -10,8 +10,8 @@ body {
 }
 
 .cover {
-    width: 300px;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     display: inline-block;
     background-size: cover;
 }
@@ -21,7 +21,8 @@ body {
 }
 
 .cover.playing {
-    border: 5px solid #e45343;
+    border: 5px solid #0AFAF6;
+    border-radius: 5px;
 }
 
 #search {
@@ -33,6 +34,8 @@ body {
 	border-radius: 5px;
 	color: #0AFAF6;
 	font-size: 20px;
+	outline: none;
+
 }
 
 #search:hover {
@@ -42,7 +45,31 @@ body {
 }
 
 #query {
-	height: 20px;
-	border-radius: 5px;
+	height: 30px;
 	width: 150px;
+	border: 0px solid #0AFAF6;
+  border-bottom-width: 2px;
+  background-color: transparent;
+  color: #0AFAF6;
+  font-size: 20px;
+  outline-width: 0;
+}
+
+.pic {
+	height: 150px;
+	width: 150px;
+	border: 3px solid #353631;
+	margin-right: 5px;
+}
+
+.piccont {
+	width: 160px;
+	height: 200px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	display: inline-block;
+}
+
+.piccont:hover {
+	cursor: pointer;
 }
