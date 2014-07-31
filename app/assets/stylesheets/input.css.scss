@@ -12,7 +12,6 @@ body {
 .cover {
     width: 100px;
     height: 100px;
-    display: inline-block;
     background-size: cover;
 }
 
@@ -44,7 +43,7 @@ body {
 	color: #353631;
 }
 
-#generate {
+#go {
 	background-color: #353631;
 	font-family: 'Inconsolata';
 	border: 2px solid #0AFAF6;
@@ -57,7 +56,7 @@ body {
 
 }
 
-#generate:hover {
+#go:hover {
 	background-color: #0AFAF6;
 	border: 2px solid #353631;
 	color: #353631;
@@ -83,9 +82,9 @@ body {
 
 .piccont {
 	width: 160px;
-	height: 210px;
-	margin-right: 20px;
-	margin-bottom: 20px;
+	height: 240px;
+	// margin-right: 20px;
+	// margin-bottom: 20px;
 	display: inline-block;
 	border: 1px solid #0AFAF6;
 	border-radius: 5px;

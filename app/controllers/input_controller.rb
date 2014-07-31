@@ -1,3 +1,5 @@
+require 'json'
+
 class InputController < ApplicationController
 
   def input
@@ -8,15 +10,37 @@ class InputController < ApplicationController
   end
 
   def make_playlist
-    @artist1 = input_params[:artist1] 
+    @artists = input_params
     # redirect_to '/playlistgenerator'
+
+      jaccardlist = {}
+      arrayofusersongnames = input_params
+      playlist_id = 1
+      while playlist_id < 100 
+        playlisttracks = Track.where(playlist_id: playlist_id)
+        arrayofplaylistsongnames = playlisttracks.map {|track| track.artist}
+        intersect = arrayofusersongnames & arrayofplaylistsongnames
+        union = arrayofusersongnames | arrayofplaylistsongnames
+        jaccard = intersect.length.to_f / union.length.to_f
+        print "The jaccard index for playlist #{playlist_id} is #{jaccard}"
+        if jaccard > 0.01
+          jaccardlist[playlist_id] = jaccard
+        end
+        playlist_id += 1 
+      end
+      
+
+      arrayofarrays = jaccardlist.sort_by{|k,v| v}.reverse
+      firstplaylist = arrayofarrays[0]
+      playlistid = firstplaylist[0]
+      score = firstplaylist[1]
+
   end
 
 private
   
   def input_params
-    params.require(:artist).permit(:artist1, :artist2, :artist3, :artist4, :artist5, :artist6, :artist7, :artist8, :artist9, :artist10)
-    # now looks like {:1 => "Echosmith", :2 =>}
+    params.require(:artists)
   end
 
 

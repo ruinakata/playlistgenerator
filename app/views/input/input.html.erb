@@ -37,11 +37,15 @@
 		<div id="artist9" class="free"><h2>Artist 9</h2></div>
 		<div id="artist10" class="free"><h2>Artist 10</h2></div>
 
-		<form id="search-form">
-		  <input type="submit" id="generate" value="Generate Playlist" />
+		<form id="maketheplaylist" action="/playlist" method="post">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		  <input type="submit" id="go" value="Find Playlist" />
 		</form>
+		<br><br><br>
 	</div>
 	
+
+
 
 
 
@@ -154,34 +158,27 @@
 									$('#a'+num).append('<img class="pic" src="' + imageurl + '"/></div>');	
 									console.log("append!")
 								}
-							
-							
 						}
 					}
 				});
 			};
 
 
-
-
-
-
-
-
-
-
 // when they select an artist append to one of the artist rows
-		$(document).ready(function(){
+	$(document).ready(function(){
 			$(document).on('click', ".piccont", function(){
 				console.log('this', this);
 				var name = $(this).attr('value');
 				console.log("got name", name);
 				// append the name to the first free div and remove class "free"
 					$('.selected-artists .free:first').append('<p>' + name + '</p>');
-					$('.selected-artists .free:first').removeClass();
+					$('.selected-artists .free:first').addClass('taken');
+					$('.selected-artists .free:first').removeClass('free');
+					var whichone = $('.selected-artists .taken').length 
+					$('#maketheplaylist').append('<input type="hidden" name="artists[]" value="'+ name + '" id="putartists"/>')
+
 			});
 		});
-
 
 
 
@@ -191,6 +188,7 @@
 				searchword = document.getElementById('query').value
 				searchArtists(searchword);
 		}, false);
+
 
 
 
