@@ -44,6 +44,25 @@ body {
 	color: #353631;
 }
 
+#generate {
+	background-color: #353631;
+	font-family: 'Inconsolata';
+	border: 2px solid #0AFAF6;
+	width: 200px;
+	height: 40px;
+	border-radius: 5px;
+	color: #0AFAF6;
+	font-size: 20px;
+	outline: none;
+
+}
+
+#generate:hover {
+	background-color: #0AFAF6;
+	border: 2px solid #353631;
+	color: #353631;
+}
+
 #query {
 	height: 30px;
 	width: 150px;
@@ -64,12 +83,41 @@ body {
 
 .piccont {
 	width: 160px;
-	height: 200px;
+	height: 210px;
 	margin-right: 20px;
 	margin-bottom: 20px;
 	display: inline-block;
+	border: 1px solid #0AFAF6;
+	border-radius: 5px;
 }
 
 .piccont:hover {
 	cursor: pointer;
 }
+
+.container {
+	width: 65%;
+	float: left;
+}
+
+.selected-artists {
+	width: 35%;
+	float: right;
+}
+
+#header {
+	margin-top: 50px;
+	border-bottom: 2px solid #0AFAF6;
+	padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
