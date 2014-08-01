@@ -110,9 +110,19 @@ body {
 	padding-bottom: 20px;
 }
 
+.player {
+	width: 15px;
+	height: 15px;
+}
 
+.player:hover {
+	cursor: pointer;
+}
 
-
+#playlistcontainer {
+	margin-left: 100px;
+	margin-top: 50px;
+}
 
 
 
