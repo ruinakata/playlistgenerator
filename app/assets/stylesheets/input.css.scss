@@ -104,10 +104,17 @@ body {
 	float: right;
 }
 
+#selected-artists {
+	    color: white;
+    font-family: 'Inconsolata';
+}
+
 #header {
 	margin-top: 50px;
 	border-bottom: 2px solid #0AFAF6;
 	padding-bottom: 20px;
+	    color: white;
+    font-family: 'Inconsolata';
 }
 
 .player {
@@ -124,9 +131,13 @@ body {
 	margin-top: 50px;
 }
 
+#myModal {
+	background-color: pink;
+}
 
-
-
+.thetable {
+	margin-top: 100px;
+}
 
 
 

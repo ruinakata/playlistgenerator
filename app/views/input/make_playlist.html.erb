@@ -5,59 +5,11 @@ the playlist
 
 <div id="playlistcontainer">
 
-		<!-- Playlist 1 *************************************************************  -->
-		<TABLE>
-			<TR>
-				<TD>Artist</TD> <TD>Song name</TD> <TD>Preview</TD>
-			</TR>
-
-						<% @thebestplaylist1.each do |track|
-		        name =  track.name 
-		        artist =  track.artist
-		        url = track.preview_url 
-		        %>
-			<TR>
-			  <TD><%= artist %></TD> <TD> <%= name %> </TD> <TD> <img class="player" value= "<%= url %>"  src="http://www.clipartbest.com/cliparts/yco/e9a/ycoe9abMi.png" > </TD>
-			</TR>
-							<% end %>
-
-		</TABLE>
-
-		<!-- Playlist 2 *************************************************************  -->
-		<TABLE>
-			<TR>
-				<TD>Artist</TD> <TD>Song name</TD> <TD>Url</TD>
-			</TR>
-
-						<% @thebestplaylist2.each do |track|
-		        name2 =  track.name 
-		        artist2 =  track.artist
-		        url2 = track.preview_url 
-		        %>
-			<TR>
-			  <TD><%= artist2 %></TD> <TD> <%= name2 %> </TD> <TD> <%= url2 %> </TD>
-			</TR>
-							<% end %>
-
-		</TABLE>
-		<!-- Playlist 3 *************************************************************  -->
-
-		<TABLE>
-			<TR>
-				<TD>Artist</TD> <TD>Song name</TD> <TD>Url</TD>
-			</TR>
-
-						<% @thebestplaylist3.each do |track|
-		        name =  track.name 
-		        artist =  track.artist
-		        url = track.preview_url 
-		        %>
-			<TR>
-			  <TD><%= artist %></TD> <TD> <%= name %> </TD> <TD> <%= url %> </TD>
-			</TR>
-							<% end %>
-
-		</TABLE>
+<%= render "playlist", :playlist => @thebestplaylist1 %>
+<%= render "playlist", :playlist => @thebestplaylist2 %>
+<%= render "playlist", :playlist => @thebestplaylist3 %>
+<%= render "playlist", :playlist => @thebestplaylist4 %>
+<%= render "playlist", :playlist => @thebestplaylist5 %>
 
 
 

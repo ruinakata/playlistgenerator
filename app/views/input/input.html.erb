@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	
@@ -11,7 +12,7 @@
 <body>
 <h1 id="header">Rui's Playlist Generator</h1>
 
-		<div class="container">
+		<div class="container" id="container">
 		    <h1>Search for an Artist</h1>
 		    <form id="search-form">
 		        <input type="text" id="query" value="" class="form-control" />
@@ -24,7 +25,7 @@
 
 
 
-	<div class="selected-artists">
+	<div class="selected-artists" id="selected-artists">
 		<h1> Selected Artists </h1>
 		<div id="artist1" class="free"><h2>Artist 1</h2></div>
 		<div id="artist2" class="free"><h2>Artist 2</h2></div>
@@ -37,16 +38,12 @@
 		<div id="artist9" class="free"><h2>Artist 9</h2></div>
 		<div id="artist10" class="free"><h2>Artist 10</h2></div>
 
-		<form id="maketheplaylist" action="/playlist" method="post">
-			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<%= form_tag '/playlist', :method => :post do %>
 		  <input type="submit" id="go" value="Find Playlist" />
-		</form>
+		<% end %>
 		<br><br><br>
 	</div>
 	
-
-
-
 
 
 <script id="results-template" type="text/x-handlebars-template">
@@ -80,19 +77,6 @@
 		//     });
 		// };
 
-		// var searchAlbums = function (query) {
-		//     $.ajax({
-		//         url: 'https://api.spotify.com/v1/search',
-		//         data: {
-		//             q: query,
-		//             type: 'album'
-		//         },
-		//         success: function (response) {
-		//         		console.log(response);
-		//             resultsPlaceholder.innerHTML = template(response);
-		//         }
-		//     });
-		// };
 
 
 		// results.addEventListener('click', function(e) {
@@ -119,10 +103,6 @@
 		//     }
 		// });
 
-		// document.getElementById('search-form').addEventListener('submit', function (e) {
-		//     e.preventDefault();
-		//     searchAlbums(document.getElementById('query').value);
-		// }, false);
 
 //////////////////////////////////////////// MINE !! /////////////////////////////////////////////
 
@@ -151,6 +131,7 @@
 								var len = response.artists.items[i].images.length
 								if (len === 0) {
 									console.log("nopics")
+									$('#a'+num).append('<img class="pic" src="/assets/rui.jpg"/></div>')
 								}
 								else {
 									imageurl = response.artists.items[i].images[0].url
@@ -175,7 +156,7 @@
 					$('.selected-artists .free:first').addClass('taken');
 					$('.selected-artists .free:first').removeClass('free');
 					var whichone = $('.selected-artists .taken').length 
-					$('#maketheplaylist').append('<input type="hidden" name="artists[]" value="'+ name + '" id="putartists"/>')
+					$('#selected-artists form').append('<input type="hidden" name="artists[]" value="'+ name + '" id="putartists"/>')
 
 			});
 		});
@@ -189,11 +170,27 @@
 				searchArtists(searchword);
 		}, false);
 
+		$('#go').on('click', function(e){
+			var searchStr = 'Searching...';
+			var updateDots = function () {
+				if (searchStr.length == 12) {
+					searchStr = 'Searching'
+				}
+				else {
+					searchStr = searchStr + '.'
+				}
+				$(e.currentTarget).val(searchStr);
+			};
+			setInterval(updateDots, 1000);
+		})
 
+		$(document).ready(function(){
+			$(document).on('click','.piccont', function (){
+			$("#query").val("");
+			console.log('clicked')
+		})
+		});
 
-		audioObject = null;
-	  audioObject = new Audio('https://p.scdn.co/mp3-preview/d1b93378dff14423603fdb7099a36ea070d385bb');
-		audioObject.play();
 
 
 </script>

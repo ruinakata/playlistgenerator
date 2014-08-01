@@ -1,0 +1,14 @@
+<table class="thetable">
+	<tr>
+		<td>Artist</td> <td>Song name</td> <td>Preview</td>
+	</tr>
+
+	<% playlist.each do |track| %>
+		<tr>
+		  <td><%= track.artist %></td>
+		  <td><%= track.name %></td>
+		  <td><img class="player" value= "<%= track.preview_url %>"  src="/assets/play.png" ></td>
+		</tr>
+	<% end %>
+
+</table>
