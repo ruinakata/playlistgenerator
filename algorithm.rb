@@ -7,9 +7,8 @@
 
 
 require 'json'
-# LOOP THRU RUN JACCARD INDEX #####################################################################
+# LOOP THRU RUN JACCARD INDEX SEARCH WITH ARTIST NAME #####################################################################
 
-########################### SEARCH WITH ARTIST NAME ###########################################
  jaccardlist = {}
  arrayofusersongnames = Track.where(playlist_id: 12).map {|track| track.artist} #compare playlist1 to everyhting else
 playlist_id = 1
@@ -29,11 +28,18 @@ end
 end
 
 arrayofarrays = jaccardlist.sort_by{|k,v| v}.reverse
-#[[71, 1.0], [1229, 0.25925925925925924], [1135, 0.25], [1233, 0.23333333333333334], [1236, 0.2222222222222222]]
+# ex. [[71, 1.0], [1229, 0.25925925925925924], [1135, 0.25]...]
 
 
 
-# JACCARD INDEX #####################################################################################
+
+
+
+
+
+
+
+# JACCARD INDEX MANUALLY#####################################################################################
 # all playlists have key of url and values as arrays of objects
 
 # jscores = {}
