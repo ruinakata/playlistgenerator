@@ -16,3 +16,7 @@
 /tmp
 
 
+simplifiedtracks*.json
+playlistpretty.json
+vectors.rb
+uniqueartists.rb
