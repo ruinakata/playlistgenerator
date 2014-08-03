@@ -1,0 +1,28 @@
+<%= @newhash %>
+arrayofarrays
+<%= @arrayofarrays %>
+
+ <div id="playlistcontainer">
+
+<%= render "playlist", :playlist => @thebestplaylist1 %>
+<%= render "playlist", :playlist => @thebestplaylist2 %>
+<%= render "playlist", :playlist => @thebestplaylist3 %>
+<%= render "playlist", :playlist => @thebestplaylist4 %>
+<%= render "playlist", :playlist => @thebestplaylist5 %>
+
+
+
+</div>
+
+
+
+<script type="text/javascript">
+	$('.player').on('click', function(){
+		console.log('player clicked')
+		musicurl = $(this).attr('value');
+		console.log(musicurl);
+		audioObject = new Audio(musicurl);
+		audioObject.play();
+	})
+
+</script>

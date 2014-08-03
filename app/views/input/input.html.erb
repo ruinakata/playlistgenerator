@@ -27,23 +27,33 @@
 
 	<div class="selected-artists" id="selected-artists">
 		<h1> Selected Artists </h1>
-		<div id="artist1" class="free"><h2>Artist 1</h2></div>
-		<div id="artist2" class="free"><h2>Artist 2</h2></div>
-		<div id="artist3" class="free"><h2>Artist 3</h2></div>
-		<div id="artist4" class="free"><h2>Artist 4</h2></div>
-		<div id="artist5" class="free"><h2>Artist 5</h2></div>
-		<div id="artist6" class="free"><h2>Artist 6</h2></div>
-		<div id="artist7" class="free"><h2>Artist 7</h2></div>
-		<div id="artist8" class="free"><h2>Artist 8</h2></div>
-		<div id="artist9" class="free"><h2>Artist 9</h2></div>
-		<div id="artist10" class="free"><h2>Artist 10</h2></div>
+		<div id="artist1" class="free"><h5>Artist 1</h5></div>
+		<div id="artist2" class="free"><h5>Artist 2</h5></div>
+		<div id="artist3" class="free"><h5>Artist 3</h5></div>
+		<div id="artist4" class="free"><h5>Artist 4</h5></div>
+		<div id="artist5" class="free"><h5>Artist 5</h5></div>
+		<div id="artist6" class="free"><h5>Artist 6</h5></div>
+		<div id="artist7" class="free"><h5>Artist 7</h5></div>
+		<div id="artist8" class="free"><h5>Artist 8</h5></div>
+		<div id="artist9" class="free"><h5>Artist 9</h5></div>
+		<div id="artist10" class="free"><h5>Artist 10</h5></div>
+
 
 		<%= form_tag '/playlist', :method => :post do %>
-		  <input type="submit" id="go" value="Find Playlist" />
+		  <input type="submit" id="go" class="go" value="Find Playlist using Jaccard" />
+		<% end %>
+
+		<%= form_tag '/playlist2', :method => :post do %>
+		  <input type="submit" id="go" class="go" value="Find Playlist using cosine" />
 		<% end %>
 		<br><br><br>
 	</div>
 	
+
+
+
+
+
 
 
 <script id="results-template" type="text/x-handlebars-template">
@@ -170,7 +180,7 @@
 				searchArtists(searchword);
 		}, false);
 
-		$('#go').on('click', function(e){
+		$('.go').on('click', function(e){
 			var searchStr = 'Searching...';
 			var updateDots = function () {
 				if (searchStr.length == 12) {
@@ -190,6 +200,9 @@
 			console.log('clicked')
 		})
 		});
+
+
+
 
 
 

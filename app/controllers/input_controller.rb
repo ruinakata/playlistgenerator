@@ -32,7 +32,7 @@ class InputController < ApplicationController
       jaccardlist = {}
       arrayofusersongnames = input_params
       i = 0
-      while i < 500
+      while i < 1500
         playlist_id = newarray[i]
         playlisttracks = Track.where(playlist_id: playlist_id)
         arrayofplaylistsongnames = playlisttracks.map {|track| track.artist}
@@ -50,25 +50,7 @@ class InputController < ApplicationController
 
 
 ##############################################################################################
-    # @artists = input_params
- 
 
-    #   jaccardlist = {}
-    #   arrayofusersongnames = input_params
-    #   playlist_id = 1
-    #   while playlist_id < 500 
-
-    #     playlisttracks = Track.where(playlist_id: playlist_id)
-    #     arrayofplaylistsongnames = playlisttracks.map {|track| track.artist}
-    #     intersect = arrayofusersongnames & arrayofplaylistsongnames
-    #     union = arrayofusersongnames | arrayofplaylistsongnames
-    #     jaccard = intersect.length.to_f / union.length.to_f
-    #     print "The jaccard index for playlist #{playlist_id} is #{jaccard}"
-    #     if jaccard > 0.01
-    #       jaccardlist[playlist_id] = jaccard
-    #     end
-    #     playlist_id += 1 
-    #   end
       
 
       @arrayofarrays = jaccardlist.sort_by{|k,v| v}.reverse
@@ -111,8 +93,7 @@ class InputController < ApplicationController
 
   def makeotherplaylist
 
-    input_params = ["JAY Z", "Drake", "Big Sean", "Nicki Minaj", "Taylor Swift", "Iggy Azalea"] 
-
+    #input_params = ["JAY Z", "Drake", "Big Sean", "Nicki Minaj", "Taylor Swift", "Iggy Azalea"] 
     #create the vector for the user input
     hash = eval(File.read('vectors.rb'))
     uniqueartistsarray = eval(File.read('uniqueartists.rb'))
@@ -125,15 +106,13 @@ class InputController < ApplicationController
         inputvector << 0
       end
     end
-
     #calculate cosine similarity (take the cosine of the anglee between the two vectors)
     # sim(a,b) = cos(a->, b->) = (a -> DOT b->) / ((unit vector a)^2 * (unit vector b)^2 )
     #loop through all vectors and calculate similarity between all pairs
-
-    newhash = {}
+    @newhash = {}
     arrayofkeys = hash.keys
     #type in how many playlists you want to look through
-    x = 300
+    x = 1500
     arrayofkeys = arrayofkeys[0..x]
     #loop through every playlist
     arrayofkeys.each do |pid|
@@ -160,8 +139,51 @@ class InputController < ApplicationController
       denominator = (sum1 * sum2)**0.5
       simscore = numerator / denominator
 
-      newhash[pid] = simscore
+      if simscore > 0.005
+        @newhash[pid] = simscore
+      end
+
     end
+
+##############################
+      @arrayofarrays = @newhash.sort_by{|k,v| v}.reverse
+
+      playlist1 = @arrayofarrays[0] #[2, 0.16666666666666666]
+      playlistid1 = playlist1[0] # 2
+      score1 = playlist1[1] # 0.16666666666666666
+      @thebestplaylist1 = Track.where(playlist_id: playlistid1)
+
+      if @arrayofarrays[1]
+        playlist2 = @arrayofarrays[1]
+        playlistid2 = playlist2[0]
+        score2 = playlist2[1]
+        @thebestplaylist2 = Track.where(playlist_id: playlistid2)
+      end
+
+      if @arrayofarrays[2]
+        playlist3 = @arrayofarrays[2]
+        playlistid3 = playlist3[0]
+        score3 = playlist3[1]
+        @thebestplaylist3 = Track.where(playlist_id: playlistid3)
+      end
+
+      if @arrayofarrays[3]
+        playlist4 = @arrayofarrays[3]
+        playlistid4 = playlist4[0]
+        score4 = playlist4[1]
+        @thebestplaylist4 = Track.where(playlist_id: playlistid3)
+      end
+
+      if @arrayofarrays[4]
+        playlist5 = @arrayofarrays[4]
+        playlistid5 = playlist5[0]
+        score5 = playlist5[1]
+        @thebestplaylist5 = Track.where(playlist_id: playlistid3)
+      end
+
+
+
+
 
 
   end
