@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get '/playlist2' => 'input#show_playlist'
   post '/playlist2' => 'input#makeotherplaylist'
 
+  get '/explain' => 'input#explain'
+
 end
