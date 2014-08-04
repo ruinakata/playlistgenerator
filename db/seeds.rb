@@ -27,7 +27,7 @@ end
 
 
 index = 0
-playlistid = arrayofurls1.length + 1 #701
+playlistid = arrayofurls1.length + 1 
 while index < arrayofurls2.length
   url = arrayofurls2[index]
   arrayoftracks = simp2[url]
