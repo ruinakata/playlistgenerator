@@ -81,14 +81,14 @@ class InputController < ApplicationController
         playlist4 = @arrayofarrays[3]
         playlistid4 = playlist4[0]
         score4 = playlist4[1]
-        @thebestplaylist4 = Track.where(playlist_id: playlistid3)
+        @thebestplaylist4 = Track.where(playlist_id: playlistid4)
       end
 
       if @arrayofarrays[4]
         playlist5 = @arrayofarrays[4]
         playlistid5 = playlist5[0]
         score5 = playlist5[1]
-        @thebestplaylist5 = Track.where(playlist_id: playlistid3)
+        @thebestplaylist5 = Track.where(playlist_id: playlistid5)
       end
 
   end
