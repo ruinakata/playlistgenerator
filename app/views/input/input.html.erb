@@ -27,16 +27,16 @@
 
 	<div class="selected-artists" id="selected-artists">
 		<h1> Selected Artists </h1>
-		<div id="artist1" class="free"><h5>Artist 1</h5></div>
-		<div id="artist2" class="free"><h5>Artist 2</h5></div>
-		<div id="artist3" class="free"><h5>Artist 3</h5></div>
-		<div id="artist4" class="free"><h5>Artist 4</h5></div>
-		<div id="artist5" class="free"><h5>Artist 5</h5></div>
-		<div id="artist6" class="free"><h5>Artist 6</h5></div>
-		<div id="artist7" class="free"><h5>Artist 7</h5></div>
-		<div id="artist8" class="free"><h5>Artist 8</h5></div>
-		<div id="artist9" class="free"><h5>Artist 9</h5></div>
-		<div id="artist10" class="free"><h5>Artist 10</h5></div>
+		<div id="artist1" class="free"><h5>Artist 1:</h5></div>
+		<div id="artist2" class="free"><h5>Artist 2:</h5></div>
+		<div id="artist3" class="free"><h5>Artist 3:</h5></div>
+		<div id="artist4" class="free"><h5>Artist 4:</h5></div>
+		<div id="artist5" class="free"><h5>Artist 5:</h5></div>
+		<div id="artist6" class="free"><h5>Artist 6:</h5></div>
+		<div id="artist7" class="free"><h5>Artist 7:</h5></div>
+		<div id="artist8" class="free"><h5>Artist 8:</h5></div>
+		<div id="artist9" class="free"><h5>Artist 9:</h5></div>
+		<div id="artist10" class="free"><h5>Artist 10:</h5></div>
 
 
 		<%= form_tag '/playlist', :method => :post do %>
@@ -44,10 +44,10 @@
 		<% end %>
 
 		<%= form_tag '/playlist2', :method => :post do %>
-		  <input type="submit" id="go" class="go" value="Find Playlist using cosine" />
+		  <input type="submit" id="go" class="go" value="Find Playlist using Cosine" />
 		<% end %>
 
-		<a href="/explain">Explanations of the two algorithms</a>
+		<a href="/explain" class="explainlink">Explanations of the two algorithms</a>
 		<br><br><br>
 	</div>
 	

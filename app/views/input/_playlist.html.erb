@@ -1,13 +1,13 @@
 <table class="thetable">
 	<tr>
-		<td>Artist</td> <td>Song name</td> <td>Preview</td>
+		<td class='theartist'><h3>Artist</h3></td> <td class="thetrack"><h3>Song name</h3></td> <td class="theplay"><h3>Preview</h3></td>
 	</tr>
 
 	<% playlist.each do |track| %>
 		<tr>
-		  <td><%= track.artist %></td>
-		  <td><%= track.name %></td>
-		  <td><img class="player" value= "<%= track.preview_url %>"  src="<%= image_path 'play.png' %>" ></td>
+		  <td class='theartist'><%= track.artist %></td>
+		  <td class='thetrack'><%= track.name %></td>
+		  <td class="theplay"><img class="player" value= "<%= track.preview_url %>"  src="<%= image_path 'play.png' %>" ></td>
 		</tr>
 	<% end %>
 
