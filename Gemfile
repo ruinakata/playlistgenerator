@@ -43,7 +43,9 @@ gem 'json'
 
 gem 'searchkick'
 
-gem 'pg'
+gem 'sqlite3'
+
+# gem 'pg'
 
 # gem 'rails_12factor', group: :production
 
